@@ -9,7 +9,7 @@
 		echo "Failed to connect: " . mysqli_connect_errno();
 	}
 
-	$query = mysqli_query($con, "INSERT INTO test VALUES ('1', 'Ram')");
+	$query = mysqli_query($con, "INSERT INTO test VALUES ('2', 'New')");
 ?>
 <!doctype html>
 <html>
@@ -17,6 +17,6 @@
 		<title><?php echo TITLE ?></title>
 	</head>
 	<body>
-		
+		<h1>test</h1>
 	</body>
 </html>
