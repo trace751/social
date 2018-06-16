@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 	define("TITLE", "Review Login");
 
 		//connect to a DB in PHPmyadmin
@@ -24,18 +27,26 @@
 		$fname = strip_tags($_POST['reg_fname']); //remove HTML tags
 		$fname = str_replace(' ', '', $fname); //remove spaces if user enteres in space
 		$fname = ucfirst(strtolower($fname)); //keeps all letters lowercase and first letter uppercase;
+		$_SESSION['reg_fname'] = $fname; //Stores input into session variable
+
 
 		$lname = strip_tags($_POST['reg_lname']); //remove HTML tags
 		$lname = str_replace(' ', '', $lname); //remove spaces if user enteres in space
 		$lname = ucfirst(strtolower($lname)); //keeps all letters lowercase and first letter uppercase;
+		$_SESSION['reg_lname'] = $lname; //Stores input into session variable
+
 
 		$email = strip_tags($_POST['reg_email']); //remove HTML tags
 		$email = str_replace(' ', '', $email); //remove spaces if user enteres in space
 		$email = ucfirst(strtolower($email)); //keeps all letters lowercase and first letter uppercase;
+		$_SESSION['email'] = $email; //Stores input into session variable
+
 
 		$email2 = strip_tags($_POST['reg_email2']); //remove HTML tags
 		$email2 = str_replace(' ', '', $email2); //remove spaces if user enteres in space
 		$email2 = ucfirst(strtolower($email2)); //keeps all letters lowercase and first letter uppercase;
+		 $_SESSION['reg_email2'] = $email2; //Stores input into session variable
+
 
 		$password = strip_tags($_POST['reg_password']); //remove HTML tags
 		$password2 = strip_tags($_POST['reg_password2']); //remove HTML tags
@@ -98,18 +109,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><?php TiTLE ?></title>
+	<title><?php TITLE ?></title>
 </head>
 <body>
 
 	<form action="register.php" method="POST">
-		<input type="text" name="reg_fname" placeholder="First Name..." required="">
+		<input type="text" name="reg_fname" placeholder="First Name..." value="<?php if(isset($_SESSION['reg_fname'])){
+
+			echo $_SESSION['reg_fname'];
+		} ?>" required="">
 		<br/>
-		<input type="text" name="reg_lname" placeholder="Last Name..." required="">
+		<input type="text" name="reg_lname" placeholder="Last Name..." value="<?php if(isset($_SESSION['reg_lname'])){
+
+			echo $_SESSION['reg_lname'];
+		} ?>" required="">
 		<br/>
-		<input type="text" name="reg_email" placeholder="Email" required="">
+		<input type="text" name="reg_email" placeholder="Email" value="<?php if(isset($_SESSION['reg_email'])){
+
+			echo $_SESSION['reg_email'];
+		} ?>" required="">
 		<br/>
-		<input type="text" name="reg_email2" placeholder="Confirm Email" required="">
+		<input type="text" name="reg_email2" placeholder="Confirm Email" value="<?php if(isset($_SESSION['reg_email2'])){
+
+			echo $_SESSION['reg_email2'];
+		} ?>" required="">
 		<br/>
 		<input type="text" name="reg_password" placeholder="Enter Password" required="">
 		<br/>
